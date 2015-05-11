@@ -14,74 +14,73 @@
 
 Conner Alegre 5/10/2015
 */
+var tryMultiplicative = function (seq) {
+  var i = 0;
+  var checkConstant = [];
+  var nextNum = 0;
+  while (i <= seq.length) {
+    var x = i + 1;
+    var y = seq[i];
+    var k = y / x;
 
-var tryMultiplicative = function(seq) {
-    var i = 0;
-    var checkConstant = [];
-    var nextNum = 0;
-    while (i <= seq.length) {
-        var x = i + 1;
-        var y = seq[i];
-        var k = y / x;
+    checkConstant.push(k);
 
-        checkConstant.push(k);
-
-        if (trackK === false || isNaN(k)) {
-            return tryDifference(seq);
-        }
-
-        var trackK = k % 1 === 0;
-
-        i++;
+    if (trackK === false || isNaN(k)) {
+      return tryDifference(seq);
     }
-    if (checkConstant[0] === checkConstant[checkConstant.length - 2]) {
-        nextNum = seq[seq.length - 1] + checkConstant[0];
-    }
-    console.log(nextNum);
+
+    var trackK = k % 1 === 0;
+
+    i++;
+  }
+  if (checkConstant[0] === checkConstant[checkConstant.length - 2]) {
+    nextNum = seq[seq.length - 1] + checkConstant[0];
+  }
+  console.log(nextNum);
 };
 
 
-var tryDifference = function(seq) {
-    var bottomLevel = [];
-    var difference = seq.slice(0);
-    for (var i = 0; i < seq.length - 1; ++i) {
-        for (var j = 0; j < difference.length - i - 1; ++j) {
-            difference[j] = difference[j + 1] - difference[j];
-        }
-        bottomLevel.push(difference[j]);
+var tryDifference = function (seq) {
+  var bottomLevel = [];
+  var difference = seq.slice(0);
+  for (var i = 0; i < seq.length - 1; ++i) {
+    for (var j = 0; j < difference.length - i - 1; ++j) {
+      difference[j] = difference[j + 1] - difference[j];
     }
-    var result = bottomLevel.reduce(function(a, b) {
-        return a + b;
-    });
-    console.log(result);
+    bottomLevel.push(difference[j]);
+  }
+  var result = bottomLevel.reduce(function (a, b) {
+    return a + b;
+  });
+  console.log(result);
 };
 
-var findGreatestDivisor = function(seq) {
-    var currentDivisor = 0;
-    for (var i = 0; i < seq.length; i++) {
-        if (seq[i + 1] !== undefined) {
-            currentDivisor = seq[i + 1] / seq[i];
-        } else {
-            return currentDivisor;
-        }
-    }
-};
-
-var findSequence = function(seq) {
-    var divisibilityScore = 0;
-    for (var i = 0; i < seq.length; i++) {
-        if (seq[i + 1] % seq[i] === 0) {
-            divisibilityScore++;
-        } else {
-            divisibilityScore--;
-        }
-    }
-    if (divisibilityScore >= 1) {
-        var divisor = findGreatestDivisor(seq);
-        console.log((seq.slice(-1).pop()) * divisor);
+var findGreatestDivisor = function (seq) {
+  var currentDivisor = 0;
+  for (var i = 0; i < seq.length; i++) {
+    if (seq[i + 1] !== undefined) {
+      currentDivisor = seq[i + 1] / seq[i];
     } else {
-        tryMultiplicative(seq);
+      return currentDivisor;
     }
+  }
+};
+
+var findSequence = function (seq) {
+  var divisibilityScore = 0;
+  for (var i = 0; i < seq.length; i++) {
+    if (seq[i + 1] % seq[i] === 0) {
+      divisibilityScore++;
+    } else {
+      divisibilityScore--;
+    }
+  }
+  if (divisibilityScore >= 1) {
+    var divisor = findGreatestDivisor(seq);
+    console.log((seq.slice(-1).pop()) * divisor);
+  } else {
+    tryMultiplicative(seq);
+  }
 };
 
 
