@@ -1,4 +1,4 @@
-var listFib = function(num) {
+var listFib = function (num) {
   var nextNum = 0;
   var initPos = 0;
   var nextPos = 1;
