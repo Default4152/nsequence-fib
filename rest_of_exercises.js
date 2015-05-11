@@ -1,37 +1,37 @@
-var logAll = function(arr) {
-    for (var i = 0; i < arr.length; i++) {
-        console.log(arr[i]);
-    }
+var logAll = function (arr) {
+  for (var i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
+  }
 };
 
-var sum = function(arr) {
-    return arr.reduce(function(a, b) {
-        return a + b;
-    });
+var sum = function (arr) {
+  return arr.reduce(function (a, b) {
+    return a + b;
+  });
 };
 
-var subtract = function(arr) {
-    var result = 0;
-    for (var i = 0; i < arr.length; i++) {
-        result = result - arr[i];
-    }
-    return result;
+var subtract = function (arr) {
+  var result = 0;
+  for (var i = 0; i < arr.length; i++) {
+    result = result - arr[i];
+  }
+  return result;
 };
 
-var largest = function(arr) {
-    return arr.sort(function(a, b) {
-        return a - b;
-    }).pop();
+var largest = function (arr) {
+  return arr.sort(function (a, b) {
+    return a - b;
+  }).pop();
 };
 
-var smallest = function(arr) {
-    return arr.sort(function(a, b) {
-        return b - a;
-    }).pop();
+var smallest = function (arr) {
+  return arr.sort(function (a, b) {
+    return b - a;
+  }).pop();
 };
 
-var average = function(arr) {
-    return sum(arr) / arr.length;
+var average = function (arr) {
+  return sum(arr) / arr.length;
 };
 
 logAll([1, 2, 3, 4, 5]);
